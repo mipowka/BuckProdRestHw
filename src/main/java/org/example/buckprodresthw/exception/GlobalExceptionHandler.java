@@ -10,4 +10,8 @@ public class GlobalExceptionHandler {
     ResponseEntity<String> handleProductNotFoundException(ProductNotFoundException e) {
         return ResponseEntity.status(404).body(e.getMessage());
     }
+    @ExceptionHandler(BucketNotFoundException.class)
+    ResponseEntity<String> handleBucketNotFoundException(BucketNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
 }
