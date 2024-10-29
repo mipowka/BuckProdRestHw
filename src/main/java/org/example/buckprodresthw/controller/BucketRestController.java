@@ -38,4 +38,11 @@ public class BucketRestController {
     public Bucket deleteProductFromBucket(@PathVariable Long bucketId, @PathVariable Long productId) {
         return bucketService.removeProductFromBucket(bucketId, productId);
     }
+
+    @DeleteMapping("/{bucketId}/delete/product/all")
+    public Bucket deleteAllProductsFromBucket(@PathVariable Long bucketId) {
+        return bucketService.removeAllProductsFromBucket(bucketId);
+    }
+
+    //сделать удаление всех продуктов из корзины
 }

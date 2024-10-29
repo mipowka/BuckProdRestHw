@@ -7,6 +7,7 @@ import org.example.buckprodresthw.model.Product;
 import org.example.buckprodresthw.repository.BucketRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -41,6 +42,15 @@ public class BucketService {
         Product product = productService.getProductById(productId);
         bucket.getProducts().remove(product);
         product.setBucket(null);
+        return createBucket(bucket);
+    }
+
+    public Bucket removeAllProductsFromBucket(Long bucketId){
+        Bucket bucket = getBucket(bucketId);
+        Iterator<Product> iterator = bucket.getProducts().iterator();
+        while (iterator.hasNext()){
+            iterator.next().setBucket(null);
+        }
         return createBucket(bucket);
     }
 }
